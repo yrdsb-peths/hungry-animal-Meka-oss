@@ -21,5 +21,15 @@ public class MyWorld extends World
         Elephant elephant = new Elephant();
         addObject(elephant, 300, 300);
         
+        createApple();
+        
+    }
+    
+    public void createApple()
+    {
+        Apple apple = new Apple();
+        int y = Greenfoot.getRandomNumber(400);;
+        int x = Greenfoot.getRandomNumber(600);
+        addObject(apple,x,y);
     }
 }
