@@ -4,7 +4,12 @@ public class Apple extends Actor
 {
     public void act() 
     {
-        setLocation(getX(),getY() - 1);
+        move(5);
+        if(isAtEdge()== true)
+        {
+            turn(Greenfoot.getRandomNumber(360));
+            move(5);
+        }
     }
     
 }
