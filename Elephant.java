@@ -12,11 +12,20 @@ public class Elephant extends Actor
      * Act - do whatever the Elephant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
+    private int timerTime = 3*60;
     public int counter;
+    public int speed = 5;
+    public int ticker = 1;
     public void act() 
     {
-        move(5);
+        
+        
+        timerTime = timerTime-ticker;
+        MyWorld world = (MyWorld) getWorld();
+        world.setTimer(timerTime/55);
+        
+        
+        move(speed);
         if(Greenfoot.isKeyDown("w") && Greenfoot.isKeyDown("d"))
         {
             setRotation(315);
@@ -49,18 +58,36 @@ public class Elephant extends Actor
         {
             setRotation(180);
         }
+        
+        if(isAtEdge())
+        {
+            turn(Greenfoot.getRandomNumber(360));
+            move(5);
+        }
         eat();
+        stop();
     }    
     
     public void eat()
     {
-        if(isTouching(Apple.class)==true)
+        if(isTouching(Apple.class))
         {
             removeTouching(Apple.class);
             MyWorld world = (MyWorld) getWorld();
             world.createApple();
-            counter++;
+            world.increaseScore();
+            timerTime= timerTime + 60;
         }
         
+    }
+    
+    public void stop()
+    {
+        MyWorld world = (MyWorld) getWorld();
+        if(world.stop==true)
+        {
+            speed=0;
+            ticker=0;
+        }
     }
 }
