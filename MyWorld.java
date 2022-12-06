@@ -19,7 +19,7 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
+        super(600, 376, 1);
         
         Elephant elephant = new Elephant();
         addObject(elephant, 300, 300);
@@ -65,5 +65,6 @@ public class MyWorld extends World
         Apple apple = new Apple();
         addObject(apple,Greenfoot.getRandomNumber(400),Greenfoot.getRandomNumber(600));
         apple.turn(10);
+        
     }
 }
