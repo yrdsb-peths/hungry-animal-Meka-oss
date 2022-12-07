@@ -13,7 +13,34 @@ public class Elephant extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootSound elephantSound = new GreenfootSound("nut_ZKo5FA9.mp3");
+    GreenfootImage[] idleRight = new GreenfootImage[10];
+    public String facing = "right";
+    public Elephant()
+    {
+        for(int i =0; i < idleRight.length;i++)
+        {
+            int j = i + 1;
+            idleRight[i] = new GreenfootImage("images\\lebron\\frame ("+j+").png");
+            idleRight[i].scale(100,100);
+        }
+        setImage(idleRight[0]);
+    }
     
+    int imageIndex = 0;
+    public void animateElephant()
+    {
+        if(facing.equals("right"))
+        {
+            setImage(idleRight[imageIndex]);
+            imageIndex= (imageIndex + 1) % idleRight.length;
+        }
+        else
+        {
+            idleRight[imageIndex].mirrorVertically();
+            setImage(idleRight[imageIndex]);
+            imageIndex= (imageIndex + 1) % idleRight.length;
+        }
+    }
     private int timerTime = 3*60;
     public int counter;
     public int speed;
@@ -33,21 +60,25 @@ public class Elephant extends Actor
             {
                 setRotation(315);
                 speed = 5;
+                facing = "right";
             }
             else if(Greenfoot.isKeyDown("s") && Greenfoot.isKeyDown("d"))
             {
                 setRotation(45);
                 speed = 5;
+                facing = "right";
             }
             else if(Greenfoot.isKeyDown("s") && Greenfoot.isKeyDown("a"))
             {
                 setRotation(135);
                 speed = 5;
+                facing = "left";
             }
             else if(Greenfoot.isKeyDown("w") && Greenfoot.isKeyDown("a"))
             {
                 setRotation(225);
                 speed = 5;
+                facing = "left";
             }
             else if(Greenfoot.isKeyDown("s")==true)
             {
@@ -63,11 +94,13 @@ public class Elephant extends Actor
             {
                 setRotation(0);
                 speed = 5;
+                facing = "right";
             }
             else if(Greenfoot.isKeyDown("a")==true)
             {
                 setRotation(180);
                 speed = 5;
+                facing = "left";
             }
             move(speed);
         }
@@ -77,6 +110,7 @@ public class Elephant extends Actor
             move(5);
         }
         eat();
+        animateElephant();
         stop();
     }    
     
