@@ -1,44 +1,72 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
-/**
- * Write a description of class Elephant here.
- * 
- * @author Mekaeel
- * @version 24/11/22
- */
-public class Elephant extends Actor
-{
-    /**
-     * Act - do whatever the Elephant wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    GreenfootSound elephantSound = new GreenfootSound("nut_ZKo5FA9.mp3");
-    GreenfootImage[] idleRight = new GreenfootImage[10];
-    public String facing = "right";
-    public Elephant()
-    {
-        for(int i =0; i < idleRight.length;i++)
+        import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+        
+        /**
+         * Write a description of class Elephant here.
+         * 
+         * @author Mekaeel
+         * @version 24/11/22
+         */
+        public class Elephant extends Actor
         {
-            int j = i + 1;
-            idleRight[i] = new GreenfootImage("images\\lebron\\frame ("+j+").png");
-            idleRight[i].scale(100,100);
-        }
-        setImage(idleRight[0]);
-    }
-    
-    int imageIndex = 0;
-    public void animateElephant()
-    {
-        if(facing.equals("right"))
+            /**
+             * Act - do whatever the Elephant wants to do. This method is called whenever
+             * the 'Act' or 'Run' button gets pressed in the environment.
+             */
+            GreenfootSound elephantSound = new GreenfootSound("lebron.mp3");
+            GreenfootImage[] idleRight = new GreenfootImage[7];
+            GreenfootImage[] idleLeft = new GreenfootImage[7];
+            GreenfootImage[] idleDown = new GreenfootImage[7];
+            GreenfootImage[] idleUp = new GreenfootImage[7];
+            public String facing = "right";
+            public Elephant()
+            {
+                for(int i =0; i < idleRight.length;i++)
+                {
+                    int j = i + 1;
+                    idleRight[i] = new GreenfootImage("images\\lebron\\frame ("+j+").png");
+                    idleRight[i].scale(100,100);
+                    
+                    idleLeft[i] = new GreenfootImage("images\\lebron\\frame ("+j+").png");
+                    idleLeft[i].scale(100,100);
+                    idleLeft[i].mirrorVertically();
+                    
+                    idleUp[i] = new GreenfootImage("images\\lebron\\frame ("+j+").png");
+                    idleUp[i].scale(100,100);
+                    idleUp[i].rotate(90);
+                    
+                    idleDown[i] = new GreenfootImage("images\\lebron\\frame ("+j+").png");
+                    idleDown[i].scale(100,100);
+                    idleDown[i].rotate(270);
+                }
+            }
+        
+        int imageIndex = 0;
+        public void animateElephant()
         {
-            setImage(idleRight[imageIndex]);
-            imageIndex= (imageIndex + 1) % idleRight.length;
-        }
-        else
-        {
-            idleRight[imageIndex].mirrorVertically();
-            setImage(idleRight[imageIndex]);
-            imageIndex= (imageIndex + 1) % idleRight.length;
+            if(true)
+            {
+                if(facing.equals("right"))
+                {
+                    setImage(idleRight[imageIndex]);
+                    imageIndex= (imageIndex + 1) % idleRight.length;
+                }
+                else if(facing.equals("left"))
+                {
+                    setImage(idleLeft[imageIndex]);
+                    imageIndex= (imageIndex + 1) % idleRight.length;
+               
+                }
+                else if(facing.equals("up"))
+                {
+                    setImage(idleUp[imageIndex]);
+                    imageIndex= (imageIndex + 1) % idleRight.length;
+                }
+                else if(facing.equals("down"))
+                {
+                    setImage(idleDown[imageIndex]);
+                    imageIndex= (imageIndex + 1) % idleRight.length;
+                }
+            System.out.println(facing);
         }
     }
     private int timerTime = 3*60;
@@ -84,11 +112,13 @@ public class Elephant extends Actor
             {
                 setRotation(90);
                 speed = 5;
+                facing = "down";
             }
             else if(Greenfoot.isKeyDown("w")==true)
             {
                 setRotation(270);
                 speed = 5;
+                facing = "up";
             }
             else if(Greenfoot.isKeyDown("d")==true)
             {
