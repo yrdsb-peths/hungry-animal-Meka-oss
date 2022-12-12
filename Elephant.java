@@ -66,7 +66,6 @@
                     setImage(idleDown[imageIndex]);
                     imageIndex= (imageIndex + 1) % idleRight.length;
                 }
-            System.out.println(facing);
         }
     }
     private int timerTime = 3*60;

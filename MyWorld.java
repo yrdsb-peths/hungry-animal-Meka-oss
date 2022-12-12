@@ -12,6 +12,7 @@ public class MyWorld extends World
     Label timer;
     public int score = 0;
     public boolean stop = false;
+    public int counter = 0;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -65,6 +66,7 @@ public class MyWorld extends World
         Apple apple = new Apple();
         addObject(apple,Greenfoot.getRandomNumber(400),Greenfoot.getRandomNumber(600));
         apple.turn(10);
-        
+        counter++;
+        counter = counter % 6;
     }
 }
