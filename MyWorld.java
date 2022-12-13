@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class MyWorld here.
@@ -10,6 +10,7 @@ public class MyWorld extends World
 {
     Label scoreLabel;
     Label timer;
+    Label gamePauseLabel;
     public int score = 0;
     public boolean stop = false;
     public int counter = 0;
@@ -31,6 +32,7 @@ public class MyWorld extends World
         timer = new Label(5,100);
         addObject(timer,550,65);
         
+        gamePauseLabel = new Label("Game Paused", 100);
         
         createApple();
         createApple();
@@ -44,6 +46,20 @@ public class MyWorld extends World
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel,300, 200);
         stop = true;
+    }
+    
+    public void pause()
+    {
+        if(stop==false)
+        {
+            addObject(gamePauseLabel,300, 200);
+            stop = true;
+        }
+        else
+        {
+            removeObject(gamePauseLabel);
+            stop = false;
+        }
     }
     
     public void increaseScore()

@@ -43,7 +43,8 @@
         int imageIndex = 0;
         public void animateElephant()
         {
-            if(true)
+            MyWorld world = (MyWorld) getWorld();
+            if(world.stop==false)
             {
                 if(facing.equals("right"))
                 {
@@ -75,9 +76,8 @@
     public void act() 
     {
         
-        
-        timerTime = timerTime-ticker;
         MyWorld world = (MyWorld) getWorld();
+        timerTime = timerTime-ticker;
         world.setTimer(timerTime/55);
         
         if(world.stop == false)
@@ -138,6 +138,11 @@
             turn(Greenfoot.getRandomNumber(360));
             move(5);
         }
+        
+        if(Greenfoot.isKeyDown("space")==true)
+        {
+            world.pause();
+        }
         eat();
         animateElephant();
         stop();
@@ -145,14 +150,18 @@
     
     public void eat()
     {
+        MyWorld world = (MyWorld) getWorld();
         if(isTouching(Apple.class))
         {
             removeTouching(Apple.class);
-            MyWorld world = (MyWorld) getWorld();
             world.createApple();
             world.increaseScore();
             timerTime= timerTime + 60;
             elephantSound.play();
+        }
+        if(world.stop==false)
+        {
+            world.removeObject(world.gamePauseLabel);
         }
         
     }
@@ -163,7 +172,11 @@
         if(world.stop==true)
         {
             speed=0;
-            ticker=0;
+            ticker = 0;
+        }
+        if(world.stop==false)
+        {
+            ticker = 1;
         }
     }
 }

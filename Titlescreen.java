@@ -8,7 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Titlescreen extends World
 {
-    Label titleLabel = new Label("Kanye West \n Simulator", 100);
+    Label titleLabel = new Label("Kanye \u262E West\n Simulator", 100);
+    
     /**
      * Constructor for objects of class Titlescreen.
      * 
