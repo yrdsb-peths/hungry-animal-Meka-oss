@@ -1,14 +1,9 @@
 # Hungry Animal Tutorial
-This is the README.md file.
-Change this file to show your intended audience what you want them to see.
 
-You can use **Markdown** syntax to format this file to do things like **bold** or *italicize* text.
-[Markdown basics](https://www.markdownguide.org/getting-started/)
+Welcome to my variation of the **Hungry Animal** game, the Kanye West Simulator. In my game I added in all 4 directions of movement including combo-movement when two keys are pressed simultaneously. There is also a timer label, sounds that play during certain events, an animated image, a score label and variety of “animals” to catch.
 
-This particular repository is the starting template for the Hungry Elephant tutorial.
+In this game you play as millionaire rap artist Kanye West, as he chases down other popular celebrities on the set of the Saturday Night Live set. You will gain points as you catch the other celebrities, as well as increase your timer so that you have more time to get more points. 
 
-[Part 1: Greenfoot Basics](https://youtu.be/zxaa3X0MihI)
+The game ends when the timer reaches zero, and prompts the freezing of all objects in the world giving a paused look to the game which can be improved on with more time to add in a pause button.
 
-[Part 2: Game Enhancements](https://youtu.be/TwID9i0Ey6o)
-
-[Part 3: Final Touches](https://youtu.be/GT-eFwa4Abc)
+Overall I added onto the base game in many ways which in my opinion improves the quality of the Hungry Animals game while also keeping the same key elements of it.
