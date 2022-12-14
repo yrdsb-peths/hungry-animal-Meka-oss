@@ -25,6 +25,7 @@ public class Titlescreen extends World
     
     public void act()
     {
+        //starts game from title screen
         if(Greenfoot.isKeyDown("g"))
         {
             MyWorld gameWorld = new MyWorld();
